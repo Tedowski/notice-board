@@ -6,8 +6,6 @@ import CommentService from '../services/CommentService'
 import PostService from '../services/PostService'
 import { useQuery } from 'react-query'
 import { Breadcrumb, Col, Divider, Row, Space, Spin, Typography } from 'antd'
-import { Comment } from '../types/Comment'
-import { Post } from '../types/Post'
 
 const { Title, Text } = Typography
 
@@ -15,11 +13,11 @@ function PostDetail() {
   const { postId } = useParams()
 
   const { data: post, isLoading: isPostLoading } = useQuery([ 'post', postId ], async () => {
-    return (await PostService.get(Number(postId))).data as Post
+    return (await PostService.get(Number(postId))).data
   })
 
   const { data: comments, isLoading: isCommentsLoading } = useQuery([ 'comments', postId ], async () => {
-    return (await CommentService.list(Number(postId))).data as Comment[]
+    return (await CommentService.list(Number(postId))).data
   })
 
   return (
@@ -54,7 +52,7 @@ function PostDetail() {
       <Title level={5}>Comments</Title>
       {isCommentsLoading && <Spin/>}
       {!isCommentsLoading && <Space direction="vertical">
-        {comments?.map((comment: Comment) => <CommentBox key={comment.id} comment={comment}/>)}
+        {comments?.map((comment) => <CommentBox key={comment.id} comment={comment}/>)}
       </Space>}
     </>
   )
