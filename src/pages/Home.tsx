@@ -6,9 +6,7 @@ import { Col, Row, Space, Spin } from 'antd'
 import { Post } from '../types/Post'
 
 function Home() {
-  const { data: posts, isLoading } = useQuery('posts', async () => {
-    return (await PostService.list()).data as Post[]
-  })
+  const { data: posts, isLoading } = useQuery('posts', async () => (await PostService.list()).data as Post[])
 
   return (
     <Row justify="center" style={{ paddingTop: 50 }}>

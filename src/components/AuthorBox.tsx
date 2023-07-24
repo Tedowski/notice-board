@@ -10,9 +10,7 @@ interface AuthorBoxProps {
 }
 
 export default function AuthorBox({ userId }: AuthorBoxProps) {
-  const { data: user } = useQuery([ 'user', userId ], async () => {
-    return (await UserService.get(userId)).data as User
-  })
+  const { data: user } = useQuery([ 'user', userId ], async () => (await UserService.get(userId)).data as User)
 
   return (
     <Card title="Author">
