@@ -13,8 +13,9 @@ function Home() {
   return (
     <Row justify="center" style={{ paddingTop: 50 }}>
       <Col>
-        {isLoading && <Spin size="large" />}
-        {!isLoading && <Space direction="vertical" size={16}>{posts?.map((post: Post) => <PostThumbnail post={post}/>)}</Space>}
+        {isLoading && <Spin size="large"/>}
+        {!isLoading &&
+            <Space direction="vertical" size={16}>{posts?.map((post: Post) => <PostThumbnail key={post.id} post={post}/>)}</Space>}
       </Col>
     </Row>
   )

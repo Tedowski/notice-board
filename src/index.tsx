@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 const queryClient = new QueryClient()
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(

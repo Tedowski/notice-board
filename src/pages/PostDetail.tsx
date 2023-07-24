@@ -38,7 +38,7 @@ function PostDetail() {
           },
         ]}
       />
-      {isPostLoading && <Row justify="center"><Col><Spin size="large" /></Col></Row>}
+      {isPostLoading && <Row justify="center"><Col><Spin size="large"/></Col></Row>}
       {!isPostLoading && <>
           <Title level={3}>{post?.title}</Title>
           <Row gutter={16} style={{ padding: '50px 0' }}>
@@ -46,15 +46,15 @@ function PostDetail() {
                   <Text>{post?.body}</Text>
               </Col>
               <Col span={6}>
-                {post && <AuthorBox userId={post.userId} />}
+                {post && <AuthorBox userId={post.userId}/>}
               </Col>
           </Row>
       </>}
-      <Divider />
+      <Divider/>
       <Title level={5}>Comments</Title>
-      {isCommentsLoading && <Spin />}
+      {isCommentsLoading && <Spin/>}
       {!isCommentsLoading && <Space direction="vertical">
-        {comments?.map((comment: Comment) => <CommentBox comment={comment}/>)}
+        {comments?.map((comment: Comment) => <CommentBox key={comment.id} comment={comment}/>)}
       </Space>}
     </>
   )
