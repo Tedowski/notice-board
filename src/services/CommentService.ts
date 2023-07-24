@@ -1,7 +1,7 @@
 import api from './api'
 
 export default {
-    list () {
-        return api.get('/comments')
+    list (postId: number) {
+        return api.get(`/comments?postId=${postId}`)
     },
 }

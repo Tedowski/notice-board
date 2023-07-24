@@ -2,14 +2,21 @@ import React from 'react'
 import PostThumbnail from '../components/PostThumbnail'
 import PostService from '../services/PostService'
 import { useQuery } from 'react-query'
+import { Col, Row, Space, Spin } from 'antd'
+import { Post } from '../types/Post'
 
 function Home() {
-  const { data: posts } = useQuery('posts', async () => {
-    return (await PostService.list()).data
+  const { data: posts, isLoading } = useQuery('posts', async () => {
+    return (await PostService.list()).data as Array<Post>
   })
 
   return (
-    <div>{posts?.map((post: any) => <PostThumbnail post={post} />)}</div>
+    <Row justify="center" style={{ paddingTop: 50 }}>
+      <Col>
+        {isLoading && <Spin size="large" />}
+        {!isLoading && <Space direction="vertical" size={16}>{posts?.map((post: any) => <PostThumbnail post={post}/>)}</Space>}
+      </Col>
+    </Row>
   )
 }
 
