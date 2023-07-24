@@ -1,16 +1,15 @@
 import React from 'react'
-import PostService from './services/PostService'
-import { useQuery } from 'react-query'
+import { Route, Routes } from 'react-router-dom'
+
+import Home from './pages/Home'
+import PostDetail from './pages/PostDetail'
 
 function App() {
-  const { data } = useQuery('posts', async () => {
-    return (await PostService.list()).data
-  })
-
-  console.log(data)
-
   return (
-    <div>🏝</div>
+    <Routes>
+      <Route path={'/'} element={<Home />} />
+      <Route path={'posts/:postId'} element={<PostDetail />} />
+    </Routes>
   )
 }
 
