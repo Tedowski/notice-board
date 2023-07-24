@@ -1,5 +1,6 @@
-import PostService from "./services/PostService";
-import { useQuery } from "react-query";
+import React from 'react'
+import PostService from './services/PostService'
+import { useQuery } from 'react-query'
 
 function App() {
   const { data } = useQuery('posts', async () => {
@@ -10,7 +11,7 @@ function App() {
 
   return (
     <div>🏝</div>
-  );
+  )
 }
 
-export default App;
+export default App
