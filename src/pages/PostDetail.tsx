@@ -12,14 +12,14 @@ import { Post } from '../types/Post'
 const { Title, Text } = Typography
 
 function PostDetail() {
-  const { postId } = useParams() as any
+  const { postId } = useParams()
 
   const { data: post, isLoading: isPostLoading } = useQuery([ 'post', postId ], async () => {
-    return (await PostService.get(postId)).data as Post
+    return (await PostService.get(Number(postId))).data as Post
   })
 
   const { data: comments, isLoading: isCommentsLoading } = useQuery([ 'comments', postId ], async () => {
-    return (await CommentService.list(postId)).data as Array<Comment>
+    return (await CommentService.list(Number(postId))).data as Comment[]
   })
 
   return (

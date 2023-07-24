@@ -1,8 +1,9 @@
 import { Card } from 'antd'
 import React from 'react'
+import { Comment } from '../types/Comment'
 
 interface CommentBoxProps {
-  comment: any
+  comment: Comment
 }
 
 export default function CommentBox({ comment }: CommentBoxProps) {

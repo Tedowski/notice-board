@@ -14,8 +14,6 @@ export default function AuthorBox({ userId }: AuthorBoxProps) {
     return (await UserService.get(userId)).data as User
   })
 
-  console.log(user)
-
   return (
     <Card title="Author">
       <Title level={5} style={{ marginTop: 0 }}>{user?.name}</Title>
